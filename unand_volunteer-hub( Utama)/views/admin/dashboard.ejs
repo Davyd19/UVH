@@ -1,0 +1,18 @@
+<div class="card-container max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl">Dashboard Administrator</h2>
+    <p class="auth-subtitle">Selamat datang, <%= user.nama_lengkap %>. Kelola seluruh aspek sistem dari sini.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+        <a href="/admin/program-overview" class="bg-primary-teal text-white p-6 rounded-xl shadow-lg hover:scale-105 transition-transform">
+            <i class="fas fa-tasks text-4xl mb-3"></i>
+            <h3 class="text-xl font-bold">Manajemen Program</h3>
+        </a>
+        <a href="/admin/seleksi-overview" class="bg-accent-blue text-white p-6 rounded-xl shadow-lg hover:scale-105 transition-transform">
+            <i class="fas fa-user-check text-4xl mb-3"></i>
+            <h3 class="text-xl font-bold">Overview Seleksi</h3>
+        </a>
+        <a href="/admin/analitik-komprehensif" class="bg-accent-purple text-white p-6 rounded-xl shadow-lg hover:scale-105 transition-transform">
+            <i class="fas fa-chart-line text-4xl mb-3"></i>
+            <h3 class="text-xl font-bold">Lihat Analitik</h3>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="card-container max-w-4xl mx-auto">
+    <h2 class="text-2xl font-bold text-center mb-6">Manajemen Pusat Volunteer</h2>
+    
+    <!-- Form Pencarian dan Tombol Tambah -->
+    <div class="mb-6 flex justify-between items-center gap-4">
+        <form action="/admin/manajemen-pusat" method="GET" class="flex-grow flex gap-2">
+            <input 
+                type="search" 
+                name="q" 
+                class="form-input flex-grow" 
+                placeholder="Cari berdasarkan nama pusat..."
+                value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>"
+            >
+            <button type="submit" class="primary-button"><i class="fas fa-search"></i></button>
+        </form>
+        <a href="/admin/manajemen-pusat/tambah" class="primary-button flex-shrink-0">
+            <i class="fas fa-plus mr-2"></i>
+            Tambah Pusat
+        </a>
+    </div>
+
+    <!-- Daftar Pusat Volunteer -->
+    <div class="space-y-3">
+        <% if (centers && centers.length > 0) { %>
+            <% centers.forEach(center => { %>
+                <div class="document-item p-4 flex justify-between items-center">
+                    <span class="document-name font-semibold"><i class="fas fa-university mr-2"></i> <%= center.nama_pusat %></span>
+                    <div class="flex items-center gap-2">
+                        <button class="secondary-button py-1.5 px-3 text-xs">Edit</button>
+                        <button class="danger-button py-1.5 px-3 text-xs">Hapus</button>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <div class="text-center text-gray-500 py-6">
+                <% if (typeof searchQuery !== 'undefined' && searchQuery) { %>
+                    <p>Tidak ada pusat volunteer yang cocok dengan pencarian "<%= searchQuery %>".</p>
+                <% } else { %>
+                    <p>Belum ada pusat volunteer yang ditambahkan.</p>
+                <% } %>
+            </div>
+        <% } %>
+    </div>
+</div>

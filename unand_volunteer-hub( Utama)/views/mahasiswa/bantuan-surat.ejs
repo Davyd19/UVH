@@ -1,0 +1,17 @@
+<div class="card-container max-w-3xl mx-auto">
+    <h2><i class="fas fa-feather-alt mr-2"></i>Bantuan Surat Motivasi ✨</h2>
+    <div class="mb-4">
+        <label class="form-label" for="motivation-letter-draft"><i class="fas fa-edit"></i>Draf Surat Motivasi Anda:</label>
+        <textarea id="motivation-letter-draft" class="form-textarea" rows="8" placeholder="Tulis draf surat motivasi Anda di sini..."></textarea>
+    </div>
+    <div class="flex justify-center mb-4">
+        <button class="primary-button" onclick="generateMotivationLetter()">
+            <i class="fas fa-magic"></i> Perbaiki Surat Saya
+        </button>
+    </div>
+    <div id="motivation-letter-response" class="llm-response-area hidden">
+        <h3>Saran Perbaikan:</h3>
+        <p id="motivation-letter-output"></p>
+        <div id="motivation-letter-loading" class="llm-loading hidden"><i class="fas fa-spinner fa-spin"></i> Memproses...</div>
+    </div>
+</div>
