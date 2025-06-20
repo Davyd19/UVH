@@ -1,0 +1,32 @@
+{
+  "name": "unand-volunteer-hub",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build:css": "npx tailwindcss -i ./src/input.css -o ./public/css/tailwind.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "tailwindcss": "^3.4.17"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rizkaputriananda7/unand-volunteer-hub-fix.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rizkaputriananda7/unand-volunteer-hub-fix/issues"
+  },
+  "homepage": "https://github.com/rizkaputriananda7/unand-volunteer-hub-fix#readme",
+  "description": ""
+}
