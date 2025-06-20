@@ -1,0 +1,68 @@
+<div class="card-container max-w-6xl mx-auto">
+    <h2 class="text-2xl font-bold text-center mb-6">Manajemen Pengguna Sistem</h2>
+
+    <!-- Form Pencarian -->
+    <div class="mb-6">
+        <form action="/admin/manajemen-pengguna" method="GET" class="flex gap-2">
+            <input 
+                type="search" 
+                name="q" 
+                class="form-input flex-grow" 
+                placeholder="Cari berdasarkan nama atau email..."
+                value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>"
+            >
+            <button type="submit" class="primary-button"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+
+    <!-- Tabel Pengguna -->
+    <div class="table-container">
+        <table class="table">
+            <thead class="table-header">
+                <tr>
+                    <th class="table-header-cell">Nama Lengkap</th>
+                    <th class="table-header-cell">Identifier (NIM/Username)</th>
+                    <th class="table-header-cell">Email</th>
+                    <th class="table-header-cell">Peran</th>
+                    <th class="table-header-cell text-center">Aksi</th>
+                </tr>
+            </thead>
+            <tbody class="table-body">
+                <% if (users && users.length > 0) { %>
+                    <% users.forEach(user => { %>
+                        <tr>
+                            <td class="table-body-cell"><%= user.nama_lengkap %></td>
+                            <td class="table-body-cell"><%= user.nim || user.username %></td>
+                            <td class="table-body-cell"><%= user.email %></td>
+                            <td class="table-body-cell capitalize"><span class="status-badge badge-<%= user.role === 'admin' ? 'rejected' : (user.role === 'pengurus' ? 'review' : 'accepted') %>"><%= user.role %></span></td>
+                            <td class="table-body-cell text-center">
+                                <!-- Form Hapus untuk setiap pengguna -->
+                                <form action="/admin/manajemen-pengguna/delete" method="POST" class="inline">
+                                    <input type="hidden" name="userId" value="<%= user.id %>">
+                                    <input type="hidden" name="role" value="<%= user.role %>">
+                                    <button 
+                                        type="submit" 
+                                        class="danger-button py-1 px-3 text-xs"
+                                        onclick="return confirm('Apakah Anda yakin ingin menghapus pengguna ini secara permanen? Tindakan ini tidak dapat diurungkan.')"
+                                    >
+                                        <i class="fas fa-trash-alt"></i> Hapus
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="5" class="text-center py-6 text-gray-500">
+                            <% if (typeof searchQuery !== 'undefined' && searchQuery) { %>
+                                Tidak ada pengguna yang cocok dengan pencarian "<%= searchQuery %>".
+                            <% } else { %>
+                                Tidak ada data pengguna di sistem.
+                            <% } %>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
